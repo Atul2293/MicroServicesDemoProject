@@ -1,0 +1,48 @@
+## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+
+
+spring:
+  application:
+    name: course-service
+  datasource:
+    url: jdbc:mysql://localhost:3306/courseDB?useSSL=false
+    username: root
+    password: root
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
+
+
+
+
+
+logging:
+  level:
+    org:
+      hibernate: SQL=DEBUG
+      type: TRACE
+
+
+
+
+server:  
+  port: ${PORT:4444}
+
+eureka:  
+  client:
+    serviceUrl:
+      defaultZone: ${DISCOVERY_URL:http://localhost:8761}/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+          
+ribbon:
+  eureka:
+    enabled: true
+
+
