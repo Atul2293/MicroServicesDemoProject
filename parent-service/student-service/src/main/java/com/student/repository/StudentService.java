@@ -3,6 +3,7 @@ package com.student.repository;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.student.model.Student;
@@ -44,4 +45,17 @@ public class StudentService {
 		return updatedStud;
 		
 	}
+
+
+public Integer deleteStudent(Long id) {
+	
+	Student stud=getStudById(id);
+	if( stud != null)
+	{
+	repo.delete(stud);
+	return 1;
+	}
+	
+	return 0; 
+}
 }

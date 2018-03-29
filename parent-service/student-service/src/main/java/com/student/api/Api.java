@@ -92,7 +92,7 @@ public class Api {
 	
 	
 	
-	/*
+	
 	//Delete Student 
 	@DeleteMapping("/students/{id}")
 	public ResponseEntity<Student> deleteStudent(@PathVariable Long id) {
@@ -102,6 +102,6 @@ public class Api {
 	        return ResponseEntity.notFound().build();
 	    }
 	    return ResponseEntity.ok().build();
-	}*/
+	}
 	
 }
