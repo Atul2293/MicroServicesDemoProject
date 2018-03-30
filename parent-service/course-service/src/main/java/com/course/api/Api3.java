@@ -18,9 +18,13 @@ import com.course.model.Course;
 import com.course.model.Student;
 import com.course.repository.CourseService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 @RestController
 @RequestMapping("/api")
-public class Api {
+@Api(value="Course Service", description="Course service")
+public class Api3 {
 
 	@Autowired
 	CourseService service;
@@ -30,7 +34,8 @@ public class Api {
 	private CourseClient client;
 	
 	//get all courses 
-		@GetMapping("/courses")
+	@ApiOperation(value = "get all courses",response = Course.class)
+		@GetMapping(value="/courses",produces = "application/json")
 		public List<Course> getAllCourse() 
 		{
 			return service.getAllCouses();	
@@ -60,7 +65,8 @@ public class Api {
 		
 		
 		// get all courses by a student id
-		@GetMapping("/courses/student/{stud_id}")
+		@ApiOperation(value = "get all courses by student id",response = Course.class)
+		@GetMapping(value="/courses/student/{stud_id}",produces="application/json")
 		public List<Course> getAllCourse(@PathVariable Long stud_id) {
 			
 			return service.getAllCousesOfStudent(stud_id);
@@ -69,7 +75,8 @@ public class Api {
 		
 		
 		// Create a new course with student id mapping
-		@PostMapping("/courses/student/{stud_id}")
+		@ApiOperation(value = "create new course by student id",response = Course.class)
+		@PostMapping(value="/courses/student/{stud_id}",produces="application/json")
 		public ResponseEntity<Course> createCourse(@PathVariable Long stud_id,@RequestBody Course courses) {
 			
 			if(client.getStudById(stud_id) != null)
