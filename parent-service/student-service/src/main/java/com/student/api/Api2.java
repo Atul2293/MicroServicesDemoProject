@@ -21,10 +21,14 @@ import com.student.model.Student;
 import com.student.model.StudentCopy;
 import com.student.repository.StudentService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 
 @RestController
 @RequestMapping("/api")
-public class Api {
+@Api(value="Student Service", description="Student service")
+public class Api2 {
 
 	@Autowired
 	StudentService service;
@@ -32,6 +36,7 @@ public class Api {
 	@Autowired
 	StudentClient studentClient;
 
+	@ApiOperation(value = "get all students",response = Student.class)
 	@GetMapping("/students")
 	public List<Student> getAllStudents() {
 		return service.getAllStudents();
@@ -39,6 +44,7 @@ public class Api {
 
 	// Create a new student(/api/students)
 	@PostMapping("/students")
+	@ApiOperation(value = "create new students",response = Student.class)
 	public Student createStud(@RequestBody Student student) {
 		return service.createNewStudent(student);
 	}

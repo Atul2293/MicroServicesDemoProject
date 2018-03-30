@@ -34,7 +34,7 @@ public class SwaggerConfig {
 	                "Terms of service",
 	                new Contact("Atul Mehetre", "..", "atul@gmail.com"),
 	               "Apache License Version 2.0",
-	                "https://www.apache.org/licenses/LICENSE-2.0",new ArrayList<>());
+	                "https://www.apache.org/licenses/LICENSE-2.0");
 	        return apiInfo;
 	    }
 }
