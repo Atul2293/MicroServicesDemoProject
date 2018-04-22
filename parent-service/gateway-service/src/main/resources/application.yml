@@ -10,18 +10,17 @@ endpoints:
     sensitive: false
 
 zuul:
-  prefix: /api
   routes:
-    courses: 
-      path: /courses/**
-      serviceId: course-service
-    students: 
-      path: /students/**
-      serviceId: student-service          
+    student: 
+      url: http://localhost:3333
+    course: 
+      url: http://localhost:4444
+          
 
-ribbon:
-  eureka:
-    enabled: true
+ribbon.eureka:
+    enabled: false
+    
+      
 
 eureka:
   client:

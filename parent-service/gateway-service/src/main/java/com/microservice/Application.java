@@ -7,6 +7,11 @@ import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.microservice.filters.ErrorFilter;
+import com.microservice.filters.PostFilter;
+import com.microservice.filters.PreFilter;
+import com.microservice.filters.RouteFilter;
+
 
 @SpringBootApplication
 @EnableZuulProxy
@@ -17,11 +22,21 @@ public class Application {
 		new SpringApplicationBuilder(Application.class).web(true).run(args);
 	}
 	
-	
 	@Bean
-	public AlwaysSampler defaultSampler() {
-	  return new AlwaysSampler();
+	public PreFilter preFilter() {
+	    return new PreFilter();
 	}
-	
+	@Bean
+	public PostFilter postFilter() {
+	    return new PostFilter();
+	}
+	@Bean
+	public ErrorFilter errorFilter() {
+	    return new ErrorFilter();
+	}
+	@Bean
+	public RouteFilter routeFilter() {
+	    return new RouteFilter();
+	}
 	
 }

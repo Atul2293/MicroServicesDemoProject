@@ -1,4 +1,4 @@
-package com.course;
+/*package com.course;
 
 import org.springframework.cloud.sleuth.sampler.AlwaysSampler;
 import org.springframework.context.annotation.Bean;
@@ -18,3 +18,4 @@ public class CourseConfig {
 	}
 	
 }
+*/
